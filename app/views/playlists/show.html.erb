@@ -1,0 +1,20 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @playlist %>
+
+<div>
+  <%= link_to "Edit this playlist", edit_playlist_path(@playlist) %> |
+  <%= link_to "Back to playlists", playlists_path %>
+  <%= button_to "Destroy this playlist", @playlist, method: :delete %>
+</div>
+
+<% if @playlist.songs.any? %>
+<div>
+  <%= render @playlist.songs %>
+</div>
+<% end %>
+
+
+<div>
+  <%= render partial: "songs/form", locals: { song: @playlist.songs.build, playlist_id: @playlist.id } %>
+</div>
